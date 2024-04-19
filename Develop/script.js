@@ -1,20 +1,58 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
-// Collect employee data
+// Collect employee data from user input and return an array of employee objects.
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
-}
 
-// Display the average salary
+    let employeesArray = [];
+    let addEmployee = true;
+
+    while (addEmployee) {
+      let firstName = prompt("Please enter the employee's first name:  ");
+      let lastName = prompt("Please enter the employee's last name:  ");
+      let salary = Number(prompt("Please enter the employee's salary:  "));
+      
+      if (isNaN(salary)) {
+        salary = 0 
+      }
+
+      employeesArray.push({ 
+        firstName,lastName,salary
+      })
+      
+      addEmployee = confirm("Would you like to add another employee?");
+    }
+  
+return employeesArray;
+  }
+
+//function to calculate and display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  
+  let totalSalary = employeesArray.reduce((acc, emp) => acc + emp.salary, 0);
+  let averageSalary = totalSalary / employeesArray.length;
+
+  console.log(averageSalary);
+ 
 }
 
-// Select a random employee
-const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
-}
+// Function to elect a random employee
+const getRandomEmployee = function(employeesArray){
+
+  const randomIndex = Math.floor(Math.random()* employeesArray.length);
+  const randomEmp = employeesArray[randomIndex];
+
+  console.log(randomEmp);
+
+  }
+
+  
+const employeeData = collectEmployees();
+displayAverageSalary(employeeData);
+getRandomEmployee(employeeData);
+
+
+
 
 /*
   ====================
@@ -66,7 +104,7 @@ const trackEmployeeData = function() {
 
   console.log('==============================');
 
-  getRandomEmployee(employees);
+ getRandomEmployee(employees);
 
   employees.sort(function(a,b) {
     if (a.lastName < b.lastName) {
