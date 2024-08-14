@@ -45,15 +45,7 @@ const getRandomEmployee = function(employeesArray){
   console.log(randomEmp);
 
   }
-
   
-const employeeData = collectEmployees();
-displayAverageSalary(employeeData);
-getRandomEmployee(employeeData);
-
-
-
-
 /*
   ====================
   STARTER CODE
